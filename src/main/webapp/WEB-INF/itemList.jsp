@@ -12,7 +12,7 @@
 <h1>ピザ・ペントミノ - 商品一覧</h1>
 
 <div align="center">
-	<h2>${user} さん、お好きなピザを選んでください</h2>
+	<h2>${user.name} さん、お好きなピザを選んでください</h2>
 
 	<form action="itemList.jsp">
 <!-- 		<table class="menu" border="0" cellspacing="1"> -->

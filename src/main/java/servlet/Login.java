@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.LoginLogic;
+import model.User;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -18,13 +19,14 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String password = request.getParameter("password");
-		String user = request.getParameter("user");
+		String name = request.getParameter("name");
+		
+		User user = new User(name, password);
 		
 		String nextJsp;
 		LoginLogic LoginLogic = new LoginLogic();
-		boolean isLogin = LoginLogic.execute(password);
 		
-		if(isLogin) {
+		if(LoginLogic.execute(user)) {
 //			パスワードが正しい場合
 			request.setAttribute("user", user);
 			nextJsp = "/WEB-INF/itemList.jsp";

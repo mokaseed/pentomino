@@ -1,8 +1,8 @@
 package model;
 
 public class LoginLogic {
-	public boolean execute(String password) {
-		if("webtext".equals(password)) {
+	public boolean execute(User user) {
+		if("webtext".equals(user.getPassword())) {
 			return true;
 		}
 		return false;

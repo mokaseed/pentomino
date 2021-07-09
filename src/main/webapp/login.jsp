@@ -14,7 +14,7 @@
 	<table>
 		<tr>
 			<td>ユーザー名</td>
-			<td><input type="text" name="user" size="16"></td>
+			<td><input type="text" name="name" size="16"></td>
 		</tr>
 		<tr>
 			<td>パスワード</td>
