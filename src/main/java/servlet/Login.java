@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.LoginLogic;
+
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,11 +18,14 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String password = request.getParameter("password");
+		String user = request.getParameter("user");
 		
 		String nextJsp;
-		if("webtext".equals(password)) {
+		LoginLogic LoginLogic = new LoginLogic();
+		boolean isLogin = LoginLogic.execute(password);
+		
+		if(isLogin) {
 //			パスワードが正しい場合
-			String user = request.getParameter("user");
 			request.setAttribute("user", user);
 			nextJsp = "/WEB-INF/itemList.jsp";
 		} else {
