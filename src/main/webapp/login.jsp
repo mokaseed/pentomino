@@ -9,22 +9,19 @@
 </head>
 <body>
 <h1>ピザ・ペントミノへようこそ！</h1>
-<div align="center">
-<form action="item_list.jsp" method="post" class="login">
-	<table class="login">
-		<tbody>
-			<tr>
-				<td>ユーザー名</td>
-				<td><input type="text" name="user"></td>
-			</tr>
-			<tr>
-				<td>パスワード</td>
-				<td><input type="password" name="pass"></td>
-			</tr>
-		</tbody>
+
+<form action="/pentomino/Login" method="post">
+	<table>
+		<tr>
+			<td>ユーザー名</td>
+			<td><input type="text" name="user" size="16"></td>
+		</tr>
+		<tr>
+			<td>パスワード</td>
+			<td><input type="password" name="password" size="16"></td>
+		</tr>
 	</table>
 	<input type="submit" value="ログイン">
 </form>
-</div>
 </body>
 </html>
