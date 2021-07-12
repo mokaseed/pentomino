@@ -1,5 +1,8 @@
+<!-- 商品一覧ページを表示するJSP -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,31 +20,19 @@
 	<form action="itemList.jsp">
 <!-- 		<table class="menu" border="0" cellspacing="1"> -->
 		<table class="menu">
-		<tbody><tr>
-			<th>商品</th>
-			<th>価格</th>
-		</tr>
-		<tr>
-			<td><input type="checkbox">商品A</td>
-			<td class="price">¥1,000</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox">商品B</td>
-			<td class="price">¥1,000</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox">商品C</td>
-			<td class="price">¥1,000</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox">商品D</td>
-			<td class="price">¥1,000</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox">商品E</td>
-			<td class="price">¥1,000</td>
-		</tr>
-		</tbody></table>
+			<tbody>
+				<tr>
+					<th>商品</th>
+					<th>価格</th>
+				</tr>
+				<c:forEach var="productItem" items="${productItemList}">
+				<tr>
+					<td><input type="checkbox"><c:out value="${productItem.itemName}"/></td>
+					<td ><c:out value="${productItem.price}"/></td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 		<input type="submit" value="チェックした商品をカートに入れる">
 	</form>
 	

@@ -1,3 +1,5 @@
+//ログイン処理を行うサーブレット
+
 package servlet;
 
 import java.io.IOException;
@@ -23,18 +25,21 @@ public class Login extends HttpServlet {
 		
 		User user = new User(name, password);
 		
-		String nextJsp;
+//		String nextpage;
 		LoginLogic LoginLogic = new LoginLogic();
 		
 		if(LoginLogic.execute(user)) {
 //			パスワードが正しい場合
 			request.setAttribute("user", user);
-			nextJsp = "/WEB-INF/itemList.jsp";
+			response.sendRedirect("/pentomino/Main");
+//			nextpage = "/pentomino/Main";
 		} else {
 //			パスワードが正しくない場合
-			nextJsp = "WEB-INF/loginFailed.jsp";
+//			nextpage = "/WEB-INF/loginFailed.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/loginFailed.jsp");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextJsp);
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher(nextpage);
+//		dispatcher.forward(request, response);
 	}
 }
