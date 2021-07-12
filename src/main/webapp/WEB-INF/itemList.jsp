@@ -15,9 +15,9 @@
 <h1>ピザ・ペントミノ - 商品一覧</h1>
 
 <div align="center">
-	<h2>${user.name} さん、お好きなピザを選んでください</h2>
+	<h2><c:out value="${user.name}"/> さん、お好きなピザを選んでください</h2>
 
-	<form action="itemList.jsp">
+	<form action="/pentomino/Main" method="post">
 <!-- 		<table class="menu" border="0" cellspacing="1"> -->
 		<table class="menu">
 			<tbody>
@@ -27,17 +27,14 @@
 				</tr>
 				<c:forEach var="productItem" items="${productItemList}">
 				<tr>
-					<td><input type="checkbox"><c:out value="${productItem.itemName}"/></td>
-					<td ><c:out value="${productItem.price}"/></td>
+					<td><input type="checkbox" name="buyItemId" value="${productItem.itemId}">
+						<c:out value="${productItem.itemName}"/></td>
+					<td><c:out value="${productItem.price}"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<input type="submit" value="チェックした商品をカートに入れる">
-	</form>
-	
-	<form action="cart.jsp">
-		<input type="submit" value="カートの内容を確認して注文へ進む">
+		<input type="submit" value="カートへ追加して内容確認へ">
 	</form>
 	
 	<form action="login.jsp">

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.LoginLogic;
 import model.User;
@@ -25,21 +26,18 @@ public class Login extends HttpServlet {
 		
 		User user = new User(name, password);
 		
-//		String nextpage;
 		LoginLogic LoginLogic = new LoginLogic();
 		
 		if(LoginLogic.execute(user)) {
 //			パスワードが正しい場合
-			request.setAttribute("user", user);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
 			response.sendRedirect("/pentomino/Main");
-//			nextpage = "/pentomino/Main";
 		} else {
 //			パスワードが正しくない場合
-//			nextpage = "/WEB-INF/loginFailed.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/loginFailed.jsp");
 			dispatcher.forward(request, response);
 		}
-//		RequestDispatcher dispatcher = request.getRequestDispatcher(nextpage);
-//		dispatcher.forward(request, response);
+
 	}
 }
