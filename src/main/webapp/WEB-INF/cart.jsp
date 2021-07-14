@@ -26,12 +26,14 @@
 		</tr>
 		<tr>
 			<c:forEach var="productItem" items="${buyItemList}">
+				<c:if test="${productItem.quantity != 0}">
 				<tr>
 					<td><c:out value="${productItem.itemName}"/></td>
 					<td><c:out value="${productItem.price}"/>円</td>
 					<td><c:out value="${productItem.quantity}"/>枚</td>
 					<td>${productItem.price * productItem.quantity}円</td>
 				</tr>
+				</c:if>
 				</c:forEach>
 		</tr>
 		<tr>
