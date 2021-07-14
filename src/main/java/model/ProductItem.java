@@ -8,6 +8,7 @@ public class ProductItem implements Serializable {
 	private int itemId;
 	private String itemName;
 	private int price;
+	private int quantity;
 	
 	public ProductItem() {}
 	public ProductItem(int itemId, String itemName, int price) {
@@ -15,6 +16,13 @@ public class ProductItem implements Serializable {
 		this.itemName = itemName;
 		this.price = price;
 	}
+	public ProductItem(int itemId, String itemName, int price, int quantity) {
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
 	public int getItemId() {
 		return itemId;
 	}
@@ -23,6 +31,9 @@ public class ProductItem implements Serializable {
 	}
 	public int getPrice() {
 		return price;
+	}
+	public int getQuantity() {
+		return quantity;
 	}
 	
 }

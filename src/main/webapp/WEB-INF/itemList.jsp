@@ -24,12 +24,14 @@
 				<tr>
 					<th>商品</th>
 					<th>価格</th>
+					<th>数量</th>
 				</tr>
 				<c:forEach var="productItem" items="${productItemList}">
 				<tr>
-					<td><input type="checkbox" name="buyItemId" value="${productItem.itemId}">
+					<td><%-- <input type="checkbox" name="buyItemId" value="${productItem.itemId}"> --%>
 						<c:out value="${productItem.itemName}"/></td>
-					<td><c:out value="${productItem.price}"/></td>
+					<td><c:out value="${productItem.price}"/>円</td>
+					<td><input type="text" name="${productItem.itemId}" size="3"/>枚</td>
 				</tr>
 				</c:forEach>
 			</tbody>

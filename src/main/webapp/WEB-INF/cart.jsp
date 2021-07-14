@@ -13,7 +13,7 @@
 <h1>ピザ・ペントミノ - カート一覧</h1>
 
 <div align="center">
-	<h2>satou さんのカート内の商品は以下の通りです</h2>
+	<h2><c:out value="${user.name}"/> さんのカート内の商品は以下の通りです</h2>
 
 	<form action="/pentomino/Complete">
 <!-- 		<table class="menu" border="0" cellspacing="1"> -->
@@ -28,15 +28,15 @@
 			<c:forEach var="productItem" items="${buyItemList}">
 				<tr>
 					<td><c:out value="${productItem.itemName}"/></td>
-					<td><c:out value="${productItem.price}"/></td>
-					<td>1個</td>
-					<td><c:out value="${productItem.price}"/></td>
+					<td><c:out value="${productItem.price}"/>円</td>
+					<td><c:out value="${productItem.quantity}"/>枚</td>
+					<td>${productItem.price * productItem.quantity}円</td>
 				</tr>
 				</c:forEach>
 		</tr>
 		<tr>
 			<td colspan="3" align="right">合計金額</td>
-			<td class="price">あとで</td>
+			<td class="price"><c:out value="${totalAmount}"/>円</td>
 		</tr>
 		</tbody></table>
 		<input type="submit" value="この内容で注文する">
